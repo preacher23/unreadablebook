@@ -42,10 +42,46 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 
 	@Override
-	public String deleteRegistration(int register_id) {
-		registrationRepository.deleteById(register_id);
+	public String deleteById(int register_id) {
+		Registration registration = new Registration();
+		try {
+			registration = registrationRepository.getById(register_id);
+		}catch (Exception e) {
+			return "Registration id "+register_id+" is not present";
+		}
+		if(0!=registration.getRegister_id()&&registration.isIs_delete()==false) {
+			registration.setIs_delete(true);
+			registrationRepository.save(registration);
+			return "Deleted succuessfully";
+		}
+		else if(registration.isIs_delete()==true) {
+			return "Data already deleted";
+		}
+		else{
+			return "No such data found in database";
+		}
 
-		return "delete succes";
+//	@Override
+//	public Object updateRegistration(int registerId, Registration registration) {
+//		try {
+//			registrationData = registrationRepository.findById(register_id).get();
+//
+//			if (registrationData.isIs_delete() == true) {
+//				return "Error : There is no Data with this id  " + register_id;
+//			}
+//			registrationData.setUser_name(registrationData.getUser_name());
+//			registrationData.setEmailaddress(registrationData.getEmailaddress());
+//			registrationData.setMobile_number(registrationData.getMobile_number());
+//			registrationData.setPassword(registrationData.getPassword());
+//			registrationData.setConfirm_password(registrationData.getConfirm_password());
+//			registrationData.setUpdated_on(new Date());
+//
+//			return registrationRepository.save(registrationData);
+//		} catch (Exception e) {
+//
+//			String message = "Error:  no data is present ";
+//			return (Object) message;
+//		}
 	}
 
 	@Override
@@ -56,11 +92,11 @@ public class RegistrationServiceImpl implements RegistrationService {
 			if (registrationData.isIs_delete() == true) {
 				return "Error : There is no Data with this id  " + register_id;
 			}
-			registrationData.setUser_name(registrationData.getUser_name());
-			registrationData.setEmailaddress(registrationData.getEmailaddress());
-			registrationData.setMobile_number(registrationData.getMobile_number());
-			registrationData.setPassword(registrationData.getPassword());
-			registrationData.setConfirm_password(registrationData.getConfirm_password());
+			registrationData.setUser_name(registration.getUser_name());
+			registrationData.setEmailaddress(registration.getEmailaddress());
+			registrationData.setMobile_number(registration.getMobile_number());
+			registrationData.setPassword(registration.getPassword());
+			registrationData.setConfirm_password(registration.getConfirm_password());
 			registrationData.setUpdated_on(new Date());
 
 			return registrationRepository.save(registrationData);
@@ -70,5 +106,4 @@ public class RegistrationServiceImpl implements RegistrationService {
 			return (Object) message;
 		}
 	}
-
 }

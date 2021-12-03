@@ -39,7 +39,7 @@ public class RegistrationController {
 
 	@DeleteMapping("/deleteRegistration/{register_id}")
 	public String deleteRegistration(@PathVariable int register_id) {
-		return registrationService.deleteRegistration(register_id);
+		return registrationService.deleteById(register_id);
 	}
 
 	@PutMapping("/updateRegistration/{register_id}")

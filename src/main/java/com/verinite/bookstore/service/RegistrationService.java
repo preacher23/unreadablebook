@@ -11,7 +11,7 @@ public interface RegistrationService {
 
 	public Registration saveRegistration(Registration registration);
 
-	public String deleteRegistration(int register_id);
+	public String deleteById(int register_id);
 
 	public Object updateRegistration(int register_id, Registration registration);
 }

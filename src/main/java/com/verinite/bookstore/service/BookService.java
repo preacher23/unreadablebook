@@ -7,13 +7,13 @@ import com.verinite.bookstore.entity.Book;
 public interface BookService {
 	public List<Book> getbooks();
 
-	public Object getById(int book_id);
+	public Object getById(int bookId);
 
 	public Book createBook(Book books);
 
-	public String deleteBookById(int book_id);
+	public String deleteBookById(int bookId);
 
-	public Object updateBook(int book_id,Book books);
+	public Object updateBook(int bookId,Book books);
 
 
 

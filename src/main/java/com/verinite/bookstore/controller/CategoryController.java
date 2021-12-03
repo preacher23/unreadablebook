@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.verinite.bookstore.entity.Category;
-import com.verinite.bookstore.serviceImpl.CategoryServiceImpl;
+import com.verinite.bookstore.serviceimpl.CategoryServiceImpl;
 
 @RestController
 @RequestMapping("/category")
@@ -34,20 +34,20 @@ public class CategoryController {
 	}
 
 	// Method for getting one data by using a categoryId
-	@GetMapping("/getCategory/{category_id}")
-	public Object getCategoryById(@PathVariable int category_id) {
-		return service.getCategoryById(category_id);
+	@GetMapping("/getCategory/{categoryId}")
+	public Object getCategoryById(@PathVariable int categoryId) {
+		return service.getCategoryById(categoryId);
 	}
 
 	// method for delete mapping
-	@DeleteMapping("/deleteCategory/{category_id}")
-	public String deleteCategory(@PathVariable int category_id) {
-		return service.deleteCategory(category_id);
+	@DeleteMapping("/deleteCategory/{categoryId}")
+	public String deleteCategory(@PathVariable int categoryId) {
+		return service.deleteCategory(categoryId);
 	}
 
 	// Method for put mapping
-	@PutMapping("/updateCategory/{category_id}")
-	public Object updateCategory(@PathVariable int category_id, @RequestBody Category category) {
-		return service.updateCategory(category_id, category);
+	@PutMapping("/updateCategory/{categoryId}")
+	public Object updateCategory(@PathVariable int categoryId, @RequestBody Category category) {
+		return service.updateCategory(categoryId, category);
 	}
 }

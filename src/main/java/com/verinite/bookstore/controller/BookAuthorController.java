@@ -20,7 +20,6 @@ public class BookAuthorController {
 	private BookAuthorService authorService;
 
 	public BookAuthorController(BookAuthorService authorService) {
-
 		this.authorService = authorService;
 	}
 

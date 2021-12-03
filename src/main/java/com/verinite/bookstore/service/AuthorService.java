@@ -9,10 +9,10 @@ public interface AuthorService {
 
 	public List<Author> allAuthors();
 
-	public Object getById(int author_id);
+	public Object getById(int authorId);
 
-	public String deleteAuthorById(int author_id);
+	public String deleteAuthorById(int authorId);
 
-	public Object updateAuthor(int author_id, Author author);
+	public Object updateAuthor(int authorId, Author author);
 
 }

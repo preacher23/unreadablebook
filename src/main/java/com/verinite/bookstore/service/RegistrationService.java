@@ -7,11 +7,11 @@ import com.verinite.bookstore.entity.Registration;
 public interface RegistrationService {
 	public List<Registration> getRegistrations();
 
-	public Object getRegistrationById(int register_id);
+	public Object getRegistrationById(int registerId);
 
 	public Registration saveRegistration(Registration registration);
 
-	public String deleteRegistration(int register_id);
+	public String deleteRegistration(int registerId);
 
-	public Object updateRegistration(int register_id, Registration registration);
+	public Object updateRegistration(int registerId, Registration registration);
 }

@@ -2,6 +2,7 @@ package com.verinite.bookstore.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,97 +11,86 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 @Entity
 @Table(name = "tbl_category")
-@Setter
-@Getter
-@ToString
+
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int category_id;
-	
-    private String category_title;
-    
-//    @Column(nullable=false ,updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created_on;
-    
-//    @Basic(optional = false)
-//    @Column(insertable = false, updatable = true)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updated_on=new Date(System.currentTimeMillis());
-    
-    private boolean is_deleted;
+	@Column(name = "category_id")
+	private int categoryId;
 
-	public int getCategory_id() {
-		return category_id;
+	@Column(name = "category_title", nullable = false)
+	private String categoryTitle;
+
+	@Column(name = "created_on", insertable = true, nullable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdOn;
+
+	@Column(name = "updated_on", insertable = true, updatable = true, nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updatedOn;
+
+	@Column(name = "is_deleted", nullable = false)
+	private boolean isDeleted;
+
+	public int getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategory_id(int category_id) {
-		this.category_id = category_id;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
-	public String getCategory_title() {
-		return category_title;
+	public String getCategoryTitle() {
+		return categoryTitle;
 	}
 
-	public void setCategory_title(String category_title) {
-		this.category_title = category_title;
+	public void setCategoryTitle(String categoryTitle) {
+		this.categoryTitle = categoryTitle;
 	}
 
-	public Date getCreated_on() {
-		return created_on;
+	public Date getCreatedOn() {
+		return createdOn;
 	}
 
-	public void setCreated_on(Date created_on) {
-		this.created_on = created_on;
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
 	}
 
-	public Date getUpdated_on() {
-		return updated_on;
+	public Date getUpdatedOn() {
+		return updatedOn;
 	}
 
-	public void setUpdated_on(Date updated_on) {
-		this.updated_on = updated_on;
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
 	}
 
-	public boolean isIs_deleted() {
-		return is_deleted;
+	public boolean isDeleted() {
+		return isDeleted;
 	}
 
-	public void setIs_deleted(boolean is_deleted) {
-		this.is_deleted = is_deleted;
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
-	@Override
-	public String toString() {
-		return "Category [category_id=" + category_id + ", category_title=" + category_title + ", created_on="
-				+ created_on + ", updated_on=" + updated_on + ", is_deleted=" + is_deleted + "]";
-	}
-
-	public Category(int category_id, String category_title, Date created_on, Date updated_on, boolean is_deleted) {
+	public Category(int categoryId, String categoryTitle, Date createdOn, Date updatedOn, boolean isDeleted) {
 		super();
-		this.category_id = category_id;
-		this.category_title = category_title;
-		this.created_on = created_on;
-		this.updated_on = updated_on;
-		this.is_deleted = is_deleted;
+		this.categoryId = categoryId;
+		this.categoryTitle = categoryTitle;
+		this.createdOn = createdOn;
+		this.updatedOn = updatedOn;
+		this.isDeleted = isDeleted;
 	}
 
 	public Category() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
-	
-//	@JsonManagedReference
-//	@OneToMany(cascade = CascadeType.ALL ,mappedBy = "category")
-//	private Set<Book> book;
 
-	
+	@Override
+	public String toString() {
+		return "Category [categoryId=" + categoryId + ", categoryTitle=" + categoryTitle + ", createdOn=" + createdOn
+				+ ", updatedOn=" + updatedOn + ", isDeleted=" + isDeleted + "]";
+	}
+
 }

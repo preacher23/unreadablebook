@@ -27,9 +27,9 @@ public class RegistrationController {
 		return registrationService.getRegistrations();
 	}
 
-	@GetMapping("/getRegistration/{register_id}")
-	public Object getRegistrationById(@PathVariable("register_id") int register_id) {
-		return registrationService.getRegistrationById(register_id);
+	@GetMapping("/getRegistration/{registerId}")
+	public Object getRegistrationById(@PathVariable("registerId") int registerId) {
+		return registrationService.getRegistrationById(registerId);
 	}
 
 	@PostMapping("/saveRegistrations")
@@ -37,13 +37,13 @@ public class RegistrationController {
 		return registrationService.saveRegistration(registration);
 	}
 
-	@DeleteMapping("/deleteRegistration/{register_id}")
-	public String deleteRegistration(@PathVariable int register_id) {
-		return registrationService.deleteRegistration(register_id);
+	@DeleteMapping("/deleteRegistration/{registerId}")
+	public String deleteRegistration(@PathVariable int registerId) {
+		return registrationService.deleteRegistration(registerId);
 	}
 
-	@PutMapping("/updateRegistration/{register_id}")
-	public Object updateRegistration(@PathVariable int register_id, @RequestBody Registration registration) {
-		return registrationService.updateRegistration(register_id, registration);
+	@PutMapping("/updateRegistration/{registerId}")
+	public Object updateRegistration(@PathVariable int registerId, @RequestBody Registration registration) {
+		return registrationService.updateRegistration(registerId, registration);
 	}
 }

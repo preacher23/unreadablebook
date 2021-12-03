@@ -2,159 +2,131 @@ package com.verinite.bookstore.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tbl_book")
-@Getter
-@Setter
-@ToString
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int book_id;
+	@Column(name = "book_id")
+	private int bookId;
 
-	private String book_title;
+	@Column(name = "book_title", nullable = false, length = 200)
+	private String bookTitle;
 
 	private String description;
 
-	private Double book_price;
+	@Column(name = "book_price")
+	private Double bookPrice;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_on")
+	private Date createdOn;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated_on")
+	private Date updatedOn;
 
-	private Date created_on;
+	@Column(name = "publisher_id")
+	private int publisherId;
 
-	private Date updated_on;
+	@Column(name = "is_deleted")
+	private boolean isDeleted;
 
-	private int publisher_id;
-
-	private boolean is_deleted;
-
-//	@JsonBackReference
-//	@ManyToOne
-//	@JoinColumn(name="category_id")
-//	private BookCategory category;
-
-
-	public int getBook_id() {
-		return book_id;
+	public int getBookId() {
+		return bookId;
 	}
 
-
-	public void setBook_id(int book_id) {
-		this.book_id = book_id;
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
 	}
 
-
-	public String getBook_title() {
-		return book_title;
+	public String getBookTitle() {
+		return bookTitle;
 	}
 
-
-	public void setBook_title(String book_title) {
-		this.book_title = book_title;
+	public void setBookTitle(String bookTitle) {
+		this.bookTitle = bookTitle;
 	}
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
-	public Double getBook_price() {
-		return book_price;
+	public Double getBookPrice() {
+		return bookPrice;
 	}
 
-
-	public void setBook_price(Double book_price) {
-		this.book_price = book_price;
+	public void setBookPrice(Double bookPrice) {
+		this.bookPrice = bookPrice;
 	}
 
-
-	public Date getCreated_on() {
-		return created_on;
+	public Date getCreatedOn() {
+		return createdOn;
 	}
 
-
-	public void setCreated_on(Date created_on) {
-		this.created_on = created_on;
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
 	}
 
-
-	public Date getUpdated_on() {
-		return updated_on;
+	public Date getUpdatedOn() {
+		return updatedOn;
 	}
 
-
-	public void setUpdated_on(Date updated_on) {
-		this.updated_on = updated_on;
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
 	}
 
-
-	public int getPublisher_id() {
-		return publisher_id;
+	public int getPublisherId() {
+		return publisherId;
 	}
 
-
-	public void setPublisher_id(int publisher_id) {
-		this.publisher_id = publisher_id;
+	public void setPublisherId(int publisherId) {
+		this.publisherId = publisherId;
 	}
 
-
-	public boolean isIs_deleted() {
-		return is_deleted;
+	public boolean isDeleted() {
+		return isDeleted;
 	}
 
-
-	public void setIs_deleted(boolean is_deleted) {
-		this.is_deleted = is_deleted;
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
-
-
-	
-
-
-	@Override
-	public String toString() {
-		return "Book [book_id=" + book_id + ", book_title=" + book_title + ", description=" + description
-				+ ", book_price=" + book_price + ", created_on=" + created_on + ", updated_on=" + updated_on
-				+ ", publisher_id=" + publisher_id + ", is_deleted=" + is_deleted +  "]";
-	}
-
-
-	public Book(int book_id, String book_title, String description, Double book_price, Date created_on,
-			Date updated_on, int publisher_id, boolean is_deleted) {
-		super();
-		this.book_id = book_id;
-		this.book_title = book_title;
-		this.description = description;
-		this.book_price = book_price;
-		this.created_on = created_on;
-		this.updated_on = updated_on;
-		this.publisher_id = publisher_id;
-		this.is_deleted = is_deleted;
-	}
-
 
 	public Book() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	
-	
-	
-	
+	public Book(int bookId, String bookTitle, String description, Double bookPrice, Date createdOn, Date updatedOn,
+			int publisherId, boolean isDeleted) {
+		super();
+		this.bookId = bookId;
+		this.bookTitle = bookTitle;
+		this.description = description;
+		this.bookPrice = bookPrice;
+		this.createdOn = createdOn;
+		this.updatedOn = updatedOn;
+		this.publisherId = publisherId;
+		this.isDeleted = isDeleted;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", description=" + description + ", bookPrice="
+				+ bookPrice + ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + ", publisherId=" + publisherId
+				+ ", isDeleted=" + isDeleted + "]";
+	}
+
 }

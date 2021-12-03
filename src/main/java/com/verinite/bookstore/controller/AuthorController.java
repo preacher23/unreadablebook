@@ -24,7 +24,6 @@ public class AuthorController {
 	// Post-Mapping-To-Insert-Author
 	@PostMapping("/saveAuthors")
 	public Author saveAuthor(@RequestBody Author author) {
-		System.out.println(author);
 		return authorService.saveAuthor(author);
 	}
 
@@ -35,22 +34,22 @@ public class AuthorController {
 	}
 
 	// Get-Mapping-To-Get-The-Author-By-Id
-	@GetMapping("/getAuthor/{author_id}")
-	public Object getById(@PathVariable int author_id) {
-		return authorService.getById(author_id);
+	@GetMapping("/getAuthor/{authorId}")
+	public Object getById(@PathVariable int authorId) {
+		return authorService.getById(authorId);
 	}
 
 	// Delete-Mapping-To-Delete-The-Author-By-Id
-	@DeleteMapping("/deleteAuthor/{author_id}")
-	public String deleteAuthorById(@PathVariable int author_id) {
-		return authorService.deleteAuthorById(author_id);
+	@DeleteMapping("/deleteAuthor/{authorId}")
+	public String deleteAuthorById(@PathVariable int authorId) {
+		return authorService.deleteAuthorById(authorId);
 
 	}
 
 	// Put-Mapping-To-Update-the-Author-FirstName-And-LastName
-	@PutMapping("/updateAuthor/{author_id}")
-	public Object updateAuthor(@PathVariable int author_id, @RequestBody Author author) {
-		return authorService.updateAuthor(author_id, author);
+	@PutMapping("/updateAuthor/{authorId}")
+	public Object updateAuthor(@PathVariable int authorId, @RequestBody Author author) {
+		return authorService.updateAuthor(authorId, author);
 
 	}
 

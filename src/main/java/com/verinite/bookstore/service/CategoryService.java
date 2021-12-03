@@ -9,8 +9,6 @@ public interface CategoryService {
 
 	public List<Category> getAllCategorys();
 
-//	public String deleteCategoryById(int category_id);
-
 	public Object updateCategory(int category_id, Category category);
 
 	public String deleteCategory(int category_id);

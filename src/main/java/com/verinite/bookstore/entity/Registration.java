@@ -2,6 +2,7 @@ package com.verinite.bookstore.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,40 +17,47 @@ public class Registration {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int register_id;
-
-	private String user_name;
+	@Column(name = "register_id")
+	private int registerId;
+	
+	@Column(name = "user_name")
+	private String userName;
 
 	private String emailaddress;
-
-	private String mobile_number;
+	
+	@Column(name = "mobile_number")
+	private String mobileNumber;
 
 	private String password;
 
-	private String confirm_password;
+	@Column(name = "confirm_password")
+	private String confirmPassword;
 	
     @Temporal(TemporalType.TIMESTAMP)
-	private Date created_on=new Date(System.currentTimeMillis());
+	@Column(name = "created_on")
+	private Date createdOn=new Date(System.currentTimeMillis());
 
     @Temporal(TemporalType.TIMESTAMP)
-	private Date updated_on=new Date(System.currentTimeMillis());
+	@Column(name = "updated_on")
+	private Date updatedOn=new Date(System.currentTimeMillis());
 
-	private boolean is_delete;
+	@Column(name = "is_delete")
+	private boolean isDelete;
 
-	public int getRegister_id() {
-		return register_id;
+	public int getRegisterId() {
+		return registerId;
 	}
 
-	public void setRegister_id(int register_id) {
-		this.register_id = register_id;
+	public void setRegisterId(int registerId) {
+		this.registerId = registerId;
 	}
 
-	public String getUser_name() {
-		return user_name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getEmailaddress() {
@@ -60,12 +68,12 @@ public class Registration {
 		this.emailaddress = emailaddress;
 	}
 
-	public String getMobile_number() {
-		return mobile_number;
+	public String getMobileNumber() {
+		return mobileNumber;
 	}
 
-	public void setMobile_number(String mobile_number) {
-		this.mobile_number = mobile_number;
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 
 	public String getPassword() {
@@ -76,65 +84,64 @@ public class Registration {
 		this.password = password;
 	}
 
-	public String getConfirm_password() {
-		return confirm_password;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
 
-	public void setConfirm_password(String confirm_password) {
-		this.confirm_password = confirm_password;
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
-	public Date getCreated_on() {
-		return created_on;
+	public Date getCreatedOn() {
+		return createdOn;
 	}
 
-	public void setCreated_on(Date created_on) {
-		this.created_on = created_on;
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
 	}
 
-	public Date getUpdated_on() {
-		return updated_on;
+	public Date getUpdatedOn() {
+		return updatedOn;
 	}
 
-	public void setUpdated_on(Date updated_on) {
-		this.updated_on = updated_on;
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
 	}
 
-	public boolean isIs_delete() {
-		return is_delete;
+	public boolean isDelete() {
+		return isDelete;
 	}
 
-	public void setIs_delete(boolean is_delete) {
-		this.is_delete = is_delete;
+	public void setDelete(boolean isDelete) {
+		this.isDelete = isDelete;
 	}
 
-	public Registration(int register_id, String user_name, String emailaddress, String mobile_number, String password,
-			String confirm_password, Date created_on, Date updated_on, boolean is_delete) {
+	public Registration(int registerId, String userName, String emailaddress, String mobileNumber, String password,
+			String confirmPassword, Date createdOn, Date updatedOn, boolean isDelete) {
 		super();
-		this.register_id = register_id;
-		this.user_name = user_name;
+		this.registerId = registerId;
+		this.userName = userName;
 		this.emailaddress = emailaddress;
-		this.mobile_number = mobile_number;
+		this.mobileNumber = mobileNumber;
 		this.password = password;
-		this.confirm_password = confirm_password;
-		this.created_on = created_on;
-		this.updated_on = updated_on;
-		this.is_delete = is_delete;
+		this.confirmPassword = confirmPassword;
+		this.createdOn = createdOn;
+		this.updatedOn = updatedOn;
+		this.isDelete = isDelete;
 	}
 
 	public Registration() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "Registration [register_id=" + register_id + ", user_name=" + user_name + ", emailaddress="
-				+ emailaddress + ", mobile_number=" + mobile_number + ", password=" + password + ", confirm_password="
-				+ confirm_password + ", created_on=" + created_on + ", updated_on=" + updated_on + ", is_delete="
-				+ is_delete + "]";
+		return "Registration [registerId=" + registerId + ", userName=" + userName + ", emailaddress=" + emailaddress
+				+ ", mobileNumber=" + mobileNumber + ", password=" + password + ", confirmPassword=" + confirmPassword
+				+ ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + ", isDelete=" + isDelete + "]";
 	}
 
+	
 	
 
 }

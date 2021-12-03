@@ -2,6 +2,7 @@ package com.verinite.bookstore.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,19 +18,23 @@ public class BookAuthor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private int book_id;
+	@Column(name = "book_id")
+	private int bookId;
 
-	private int author_id;
+	@Column(name = "author_id")
+	private int authorId;
 
 	// @Basic(optional = false)
 //	@Column(nullable=false ,insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date created_on;
+	@Column(name = "created_on")
+	private Date createdOn;
 
 	// @Basic(optional = false)
 //	@Column(insertable = false, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated_on;
+	@Column(name = "updated_on")
+	private Date updatedOn;
 
 	public int getId() {
 		return id;
@@ -39,56 +44,55 @@ public class BookAuthor {
 		this.id = id;
 	}
 
-	public int getBook_id() {
-		return book_id;
+	public int getBookId() {
+		return bookId;
 	}
 
-	public void setBook_id(int book_id) {
-		this.book_id = book_id;
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
 	}
 
-	public int getAuthor_id() {
-		return author_id;
+	public int getAuthorId() {
+		return authorId;
 	}
 
-	public void setAuthor_id(int author_id) {
-		this.author_id = author_id;
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
 	}
 
-	public Date getCreated_on() {
-		return created_on;
+	public Date getCreatedOn() {
+		return createdOn;
 	}
 
-	public void setCreated_on(Date created_on) {
-		this.created_on = created_on;
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
 	}
 
-	public Date getUpdated_on() {
-		return updated_on;
+	public Date getUpdatedOn() {
+		return updatedOn;
 	}
 
-	public void setUpdated_on(Date updated_on) {
-		this.updated_on = updated_on;
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
 	}
 
-	public BookAuthor(int id, int book_id, int author_id, Date created_on, Date updated_on) {
+	public BookAuthor(int id, int bookId, int authorId, Date createdOn, Date updatedOn) {
 		super();
 		this.id = id;
-		this.book_id = book_id;
-		this.author_id = author_id;
-		this.created_on = created_on;
-		this.updated_on = updated_on;
+		this.bookId = bookId;
+		this.authorId = authorId;
+		this.createdOn = createdOn;
+		this.updatedOn = updatedOn;
 	}
 
 	public BookAuthor() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "BookAuthor [id=" + id + ", book_id=" + book_id + ", author_id=" + author_id + ", created_on="
-				+ created_on + ", updated_on=" + updated_on + "]";
+		return "BookAuthor [id=" + id + ", bookId=" + bookId + ", authorId=" + authorId + ", createdOn=" + createdOn
+				+ ", updatedOn=" + updatedOn + "]";
 	}
 
 }

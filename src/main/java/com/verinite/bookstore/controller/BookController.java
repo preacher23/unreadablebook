@@ -18,34 +18,32 @@ import com.verinite.bookstore.service.BookService;
 @RestController
 @RequestMapping("/book")
 public class BookController {
-    @Autowired
-    private BookService bookService;
+	@Autowired
+	private BookService bookService;
 
+	@GetMapping("/getAllBooks")
+	public List<Book> getBooks() {
+		return bookService.getbooks();
+	}
 
-    @GetMapping("/getAllBooks")
-    public List<Book> getBooks() {
-        return bookService.getbooks();
-    }
+	@GetMapping("/viewBook/{bookId}")
+	public Object getById(@PathVariable("bookId") int bookId) {
+		return bookService.getById(bookId);
+	}
 
-    @GetMapping("/viewBook/{book_id}")
-    public Object getById(@PathVariable("book_id") int book_id) {
-        return bookService.getById(book_id);
-    }
+	@PostMapping("/saveBooks")
+	public Book createBook(@RequestBody Book books) {
+		return bookService.createBook(books);
+	}
 
-    @PostMapping("/saveBooks")
-    public Book createBook(@RequestBody Book books) {
-        return bookService.createBook(books);
-    }
+	@DeleteMapping("/deleteBook/{bookId}")
+	public String deleteBookById(@PathVariable int bookId) {
+		return bookService.deleteBookById(bookId);
+	}
 
-    @DeleteMapping("/deleteBook/{bookId}")
-    public String deleteBookById(@PathVariable int bookId) {
-        return bookService.deleteBookById(bookId);
-    }
-
-    @PutMapping("/updateBook/{book_id}")
-    public Object updateBook(@PathVariable int book_id,@RequestBody Book books) {
-        return bookService.updateBook(book_id,books);
-    }
-
+	@PutMapping("/updateBook/{bookId}")
+	public Object updateBook(@PathVariable int bookId, @RequestBody Book books) {
+		return bookService.updateBook(bookId, books);
+	}
 
 }

@@ -17,95 +17,96 @@ public class Author {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int author_id;
-	
-	@Column(nullable = false, length = 128)
-	private String first_name;
-	
-	@Column(nullable = false, length = 128)
-	private String last_name;
-	
+	@Column(name = "author_id")
+	private int authorId;
+
+	@Column(name = "first_name", nullable = false, length = 128)
+	private String firstName;
+
+	@Column(name = "last_name", nullable = false, length = 128)
+	private String lastName;
+
 //	@Basic(optional = false)
 //	@Column(insertable = false, updatable = false)
+	@Column(name = "created_on")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date created_on;
-	
+	private Date createdOn;
+
 //	@Basic(optional = false)
 //	@Column(insertable = false, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated_on;
-	
-	@Column(nullable = false)
-	private boolean is_deleted;
+	@Column(name = "updated_on")
+	private Date updatedOn;
 
-	public int getAuthor_id() {
-		return author_id;
+	@Column(name = "is_deleted", nullable = false)
+	private boolean isDeleted;
+
+	public int getAuthorId() {
+		return authorId;
 	}
 
-	public void setAuthor_id(int author_id) {
-		this.author_id = author_id;
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public Date getCreated_on() {
-		return created_on;
+	public Date getCreatedOn() {
+		return createdOn;
 	}
 
-	public void setCreated_on(Date created_on) {
-		this.created_on = created_on;
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
 	}
 
-	public Date getUpdated_on() {
-		return updated_on;
+	public Date getUpdatedOn() {
+		return updatedOn;
 	}
 
-	public void setUpdated_on(Date updated_on) {
-		this.updated_on = updated_on;
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
 	}
 
-	public boolean isIs_deleted() {
-		return is_deleted;
+	public boolean isDeleted() {
+		return isDeleted;
 	}
 
-	public void setIs_deleted(boolean is_deleted) {
-		this.is_deleted = is_deleted;
-	}
-
-	@Override
-	public String toString() {
-		return "Author [author_id=" + author_id + ", first_name=" + first_name + ", last_name=" + last_name
-				+ ", created_on=" + created_on + ", updated_on=" + updated_on + ", is_deleted=" + is_deleted + "]";
-	}
-
-	public Author(int author_id, String first_name, String last_name, Date created_on, Date updated_on,
-			boolean is_deleted) {
-		super();
-		this.author_id = author_id;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.created_on = created_on;
-		this.updated_on = updated_on;
-		this.is_deleted = is_deleted;
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 	public Author() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	public Author(int authorId, String firstName, String lastName, Date createdOn, Date updatedOn, boolean isDeleted) {
+		super();
+		this.authorId = authorId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.createdOn = createdOn;
+		this.updatedOn = updatedOn;
+		this.isDeleted = isDeleted;
+	}
+
+	@Override
+	public String toString() {
+		return "Author [authorId=" + authorId + ", firstName=" + firstName + ", lastName=" + lastName + ", createdOn="
+				+ createdOn + ", updatedOn=" + updatedOn + ", isDeleted=" + isDeleted + "]";
 	}
 
 }

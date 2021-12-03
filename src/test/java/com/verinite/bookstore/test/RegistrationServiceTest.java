@@ -1,9 +1,8 @@
 package com.verinite.bookstore.test;
 
 import com.verinite.bookstore.entity.Registration;
-import com.verinite.bookstore.repository.RegistrationRepository;
 import com.verinite.bookstore.serviceimpl.RegistrationServiceImpl;
-
+import com.verinite.bookstore.repository.RegistrationRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -22,20 +21,20 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class RegistrationServiceTest {
-
+	
 	@InjectMocks
 	RegistrationServiceImpl registrationServiceImpl;
 
 	@Mock
 	RegistrationRepository registrationRepository;
-
+	
 	@Test
 	public void test_register() {
 		Registration registration = dummyRegistration();
 		when(registrationRepository.save(registration)).thenReturn(registration);
 		Registration response = registrationServiceImpl.saveRegistration(registration);
 		assertNotNull(response);
-		assertEquals(registrationServiceImpl.saveRegistration(registration), registration);
+		assertEquals(registrationServiceImpl.saveRegistration(registration),registration);
 	}
 
 	@Test
@@ -47,7 +46,7 @@ public class RegistrationServiceTest {
 		when(registrationRepository.findAll()).thenReturn(list);
 		List<Registration> response = registrationServiceImpl.getRegistrations();
 		assertNotNull(response);
-		assertEquals(list.size(), response.size());
+		assertEquals(list.size(),response.size() );
 	}
 
 	@Test
@@ -58,7 +57,7 @@ public class RegistrationServiceTest {
 		when(registrationRepository.getById(registerId)).thenReturn(registration);
 		Object response = registrationServiceImpl.getRegistrationById(registerId);
 		assertNotNull(response);
-		assertEquals("Id not Found", response);
+		assertEquals("Id not Found",response);
 
 	}
 
@@ -69,7 +68,7 @@ public class RegistrationServiceTest {
 		Object response = registrationServiceImpl.updateRegistration(registerId, dummyRegistration());
 		assertNotNull(response);
 		System.out.println(response);
-		assertEquals("Error:  no data is present ", response);
+		assertEquals("Error:  no data is present ",response);
 	}
 
 	@Test
@@ -78,7 +77,7 @@ public class RegistrationServiceTest {
 		when(registrationRepository.getById(regId)).thenReturn(dummyRegistration());
 		Object response = registrationServiceImpl.deleteRegistration(regId);
 		assertNotNull(response);
-		assertEquals("Deleted succuessfully", response);
+		assertEquals("Deleted succuessfully",response);
 	}
 
 	@Test
@@ -98,19 +97,20 @@ public class RegistrationServiceTest {
 		when(registrationRepository.getById(regId)).thenReturn(registration);
 		Object response = registrationServiceImpl.deleteRegistration(regId);
 		assertNotNull(response);
-		assertEquals("Data already deleted", response);
+		assertEquals("Data already deleted",response);
 	}
 
 	@Test
 	public void test_deleteFailure2() {
 
-		int regId = 1;
+		int regId=1;
 		Registration registration = new Registration();
 		when(registrationRepository.getById(regId)).thenReturn(registration);
 		Object response = registrationServiceImpl.deleteRegistration(regId);
 		assertNotNull(response);
-		assertEquals("No such data found in database", response);
+		assertEquals("No such data found in database",response);
 	}
+
 
 	private Registration dummyRegistration() {
 		Registration registration = new Registration();
@@ -124,6 +124,7 @@ public class RegistrationServiceTest {
 		registration.setUpdatedOn(new Date());
 		registration.setDelete(false);
 		return registration;
-
+		
 	}
+
 }

@@ -43,8 +43,19 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public String deleteBookById(int bookId) {
-		bookRepo.deleteById(bookId);
-		return "delete succes";
+		try {
+			Book book = bookRepo.findById(bookId).get();
+			if (!book.isDeleted()) {
+				book.setDeleted(true);
+				bookRepo.save(book);
+
+				return "BOOK Successfully deleted";
+			} else {
+				return "Given ID is already deleted";
+			}
+		} catch (Exception e) {
+			return "Id not Found";
+		}
 	}
 
 	@Override

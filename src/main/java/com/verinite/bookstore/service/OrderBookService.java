@@ -1,0 +1,25 @@
+package com.verinite.bookstore.service;
+import java.util.List;
+
+import com.verinite.bookstore.entity.OrderBook;
+
+
+
+public interface OrderBookService {
+	//insert
+	OrderBook saveOrderBook(OrderBook  orderbook);
+	//display all data
+	List<OrderBook> displayAllOrders();
+	//display by order id
+	Object displayByOrderId(int orderId);
+	//update by id
+	Object updateById(int orderId,OrderBook  orderbook);
+	// search by book name
+	List<Object> searchByBookName(String bookname);
+	//search by book id
+	List<Object> searchByBookId(int bookid);
+	/*
+	 * //delete order id String deleteByOrderId(int orderId);
+	 */
+
+}

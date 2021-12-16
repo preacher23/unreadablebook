@@ -49,7 +49,7 @@ public class BookServiceImpl implements BookService {
 				book.setDeleted(true);
 				bookRepo.save(book);
 
-				return "BOOK Successfully deleted";
+				return "record Successfully deleted";
 			} else {
 				return "Given ID is already deleted";
 			}

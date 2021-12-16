@@ -19,13 +19,20 @@ public class RegistrationServiceImpl implements RegistrationService {
 
 	Registration registrationData;
 
+//	@Override
+//	public List<Registration> getRegistrations() {
+//		List<Registration> registrationlist = new ArrayList<>();
+//		registrationRepository.findAll().forEach(registrationlist::add);
+//		return registrationlist;
+//	}
+	
 	@Override
 	public List<Registration> getRegistrations() {
-		List<Registration> registrationlist = new ArrayList<>();
-		registrationRepository.findAll().forEach(registrationlist::add);
-		return registrationlist;
-	}
-
+        List<Registration> registrationlist = new ArrayList<>();
+        registrationRepository.getAllUser(false).forEach(registrationlist::add);
+        return registrationlist;
+    }
+	
 	@Override
 	public Object getRegistrationById(int registerId) {
 		try {

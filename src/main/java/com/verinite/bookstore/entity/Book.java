@@ -1,5 +1,6 @@
 package com.verinite.bookstore.entity;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -40,6 +41,9 @@ public class Book {
 
 	@Column(name = "is_deleted")
 	private boolean isDeleted;
+	
+	@Column(name = "pic_byte", length = 1000)
+	private byte[] picByte;
 
 	public int getBookId() {
 		return bookId;
@@ -104,13 +108,22 @@ public class Book {
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+	
+
+	public byte[] getPicByte() {
+		return picByte;
+	}
+
+	public void setPicByte(byte[] picByte) {
+		this.picByte = picByte;
+	}
 
 	public Book() {
 		super();
 	}
 
 	public Book(int bookId, String bookTitle, String description, Double bookPrice, Date createdOn, Date updatedOn,
-			int publisherId, boolean isDeleted) {
+			int publisherId, boolean isDeleted, byte[] picByte) {
 		super();
 		this.bookId = bookId;
 		this.bookTitle = bookTitle;
@@ -120,13 +133,17 @@ public class Book {
 		this.updatedOn = updatedOn;
 		this.publisherId = publisherId;
 		this.isDeleted = isDeleted;
+		this.picByte = picByte;
 	}
 
 	@Override
 	public String toString() {
 		return "Book [bookId=" + bookId + ", bookTitle=" + bookTitle + ", description=" + description + ", bookPrice="
 				+ bookPrice + ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + ", publisherId=" + publisherId
-				+ ", isDeleted=" + isDeleted + "]";
+				+ ", isDeleted=" + isDeleted + ", picByte=" + Arrays.toString(picByte) + "]";
 	}
 
+	
+
+	
 }

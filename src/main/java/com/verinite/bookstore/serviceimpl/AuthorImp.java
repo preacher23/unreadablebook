@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.verinite.bookstore.entity.Author;
@@ -68,33 +69,9 @@ public class AuthorImp implements AuthorService {
 
 	}
 
-//	@Override
-//	// To-Update-Author-FirstNmae-And-LastName
-//	public Object updateAuthor(int authorId, Author author) {
-//
-//		try {
-//			Author authorEntity = authorRepo.findById(authorId).get();
-//			boolean b = authorEntity.isDeleted();
-//			if (!b) {
-//				authorEntity.setUpdatedOn(new Date());
-//				authorEntity.setFirstName(author.getFirstName());
-//				authorEntity.setLastName(author.getLastName());
-//
-//				final Author up = authorRepo.save(authorEntity);
-//				return ResponseEntity.ok(up);
-//			} else {
-//				return "The given authorId already deleted,So we cant update-it";
-//			}
-//
-//		} catch (Exception e) {
-//			return "Id not Found";
-//		}
-//
-//	}
-	
 	@Override
 	// To-Update-Author-FirstNmae-And-LastName
-	public Optional<Object> updateAuthor(int authorId, Author author) {
+	public Object updateAuthor(int authorId, Author author) {
 
 		try {
 			Author authorEntity = authorRepo.findById(authorId).get();
@@ -104,15 +81,44 @@ public class AuthorImp implements AuthorService {
 				authorEntity.setFirstName(author.getFirstName());
 				authorEntity.setLastName(author.getLastName());
 
-				return Optional.empty();
+				final Author up = authorRepo.save(authorEntity);
+				return ResponseEntity.ok(up);
 			} else {
-				return Optional.ofNullable("The given authorId already deleted,So we cant update-it");
+				return "The given authorId already deleted,So we cant update-it";
 			}
 
 		} catch (Exception e) {
-			return Optional.ofNullable("Id not Found");
+			return "Id not Found";
 		}
 
 	}
+	
+	@Override
+	public List<Author> getByFirstName(String firstName) {
+			return authorRepo.getByFirstName(firstName);
+	}
+	
+//	@Override
+//	// To-Update-Author-FirstNmae-And-LastName
+//	public Optional<Object> updateAuthor(int authorId, Author author) {
+//
+//		try {
+//			Author authorEntity = authorRepo.findById(authorId).get();
+//			boolean b = authorEntity.isDeleted();
+//			if (!b) {
+//				authorEntity.setUpdatedOn(new Date());
+//				authorEntity.setFirstName(author.getFirstName());
+//				authorEntity.setLastName(author.getLastName());
+//
+//				return Optional.empty();
+//			} else {
+//				return Optional.ofNullable("The given authorId already deleted,So we cant update-it");
+//			}
+//
+//		} catch (Exception e) {
+//			return Optional.ofNullable("Id not Found");
+//		}
+//
+//	}
 
 }

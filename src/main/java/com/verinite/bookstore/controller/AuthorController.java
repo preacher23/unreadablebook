@@ -3,6 +3,7 @@ package com.verinite.bookstore.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,8 @@ import com.verinite.bookstore.entity.Author;
 import com.verinite.bookstore.service.AuthorService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+
 @RequestMapping("/author")
 public class AuthorController {
 	@Autowired
@@ -52,5 +55,11 @@ public class AuthorController {
 		return authorService.updateAuthor(authorId, author);
 
 	}
+	
+	//Get-Mapping By FirstName
+		@GetMapping("/getAuthorByFirstName/{firstName}")
+		public List<Author> getByFirstName(@PathVariable String firstName) {
+			return authorService.getByFirstName(firstName);
+		}
 
 }

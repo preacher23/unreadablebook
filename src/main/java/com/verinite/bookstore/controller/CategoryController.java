@@ -17,16 +17,16 @@ import com.verinite.bookstore.entity.Category;
 import com.verinite.bookstore.serviceimpl.CategoryServiceImpl;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-
 @RequestMapping("/category")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("http://localhost:4200/")
 public class CategoryController {
 	@Autowired
 	CategoryServiceImpl service;
 
 	// Method for post mapping
 	@PostMapping("/saveCategory")
-	public Category saveCategory(@RequestBody Category category) {
+	public Object saveCategory(@RequestBody Category category) {
 		return service.saveCategory(category);
 	}
 
@@ -37,20 +37,24 @@ public class CategoryController {
 	}
 
 	// Method for getting one data by using a categoryId
-	@GetMapping("/getCategory/{categoryId}")
-	public Object getCategoryById(@PathVariable int categoryId) {
-		return service.getCategoryById(categoryId);
+	@GetMapping("/getCategory/{category_id}")
+	public Object getCategoryById(@PathVariable int category_id) {
+		return service.getCategoryById(category_id);
+	}
+	@GetMapping("/getCategory/byName/{category_name}")
+	public Object getCategoryByName(@PathVariable String category_name) {
+		return service.getCategoryByName(category_name);
 	}
 
 	// method for delete mapping
-	@DeleteMapping("/deleteCategory/{categoryId}")
-	public String deleteCategory(@PathVariable int categoryId) {
-		return service.deleteCategory(categoryId);
+	@DeleteMapping("/deleteCategory/{category_id}")
+	public String deleteCategory(@PathVariable int category_id) {
+		return service.deleteCategory(category_id);
 	}
 
 	// Method for put mapping
-	@PutMapping("/updateCategory/{categoryId}")
-	public Object updateCategory(@PathVariable int categoryId, @RequestBody Category category) {
-		return service.updateCategory(categoryId, category);
+	@PutMapping("/updateCategory/{category_id}")
+	public Object updateCategory(@PathVariable int category_id, @RequestBody Category category) {
+		return service.updateCategory(category_id, category);
 	}
 }

@@ -12,5 +12,5 @@ public interface BookCustomersService {
 	Object updateCustomerById(int customerId, BookCustomers bookCustomers);	
 	Object updateCountry(int customerId, BookCustomers bookCustomers);
 	public List <Object> getCustomerByState(String state);
-	
+	public List<BookCustomers> searchText(Object temp) ;
 }

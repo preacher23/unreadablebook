@@ -16,5 +16,10 @@ public interface OrderBookRepository extends JpaRepository<OrderBook, Integer> {
 	
 	List<Object> findByBookId(int bookid);
 	List<Object> findByBookName(String bookname);
+	@Query(value="select * from tbl_orderbook where order_id=?1 OR book_id=?1",nativeQuery = true)
+	List<OrderBook> findByIntegers(int num);
+
+@Query(value="select * from tbl_orderbook where book_name=?1",nativeQuery = true)
+	List<OrderBook> searchText(Object text);
 
 }

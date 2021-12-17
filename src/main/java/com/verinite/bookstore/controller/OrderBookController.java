@@ -69,5 +69,9 @@ public	List<Object> displayByBookId(@PathVariable int bookid)
 	 * deleteOrederIdRecord(@PathVariable int orderid) { return
 	 * service.deleteByOrderId(orderid); }
 	 */
-
+	@GetMapping("/Order-Book/search/{text}")
+	public List<OrderBook> search(@PathVariable Object text)
+	{
+		return service.searchText(text);
+	}
 }

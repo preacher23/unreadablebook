@@ -120,4 +120,15 @@ public class BookCustomersServiceImp  implements BookCustomersService {
 		return bookCustomersRepo.findByState(state);
 		}
 	}
+	
+	@Override
+	public List<BookCustomers> searchText(Object temp) {
+		if(((String) temp).matches("[0-9]+"))
+		{
+			int num=Integer.parseInt((String) temp);
+			return bookCustomersRepo.findByCustomerId(num);
+		}
+		else
+			return bookCustomersRepo.search(temp);
+	}
 }

@@ -113,6 +113,18 @@ public class OrderBookImpl implements OrderBookService{
 			return orderBookRepository.findByBookId(bookid);
 	}
 
-	
+	@Override
+	public List<OrderBook> searchText(Object text) {
+		if(((String) text).matches("[0-9]+"))
+		{
+			int num=Integer.parseInt((String) text);
+			return orderBookRepository.findByIntegers(num);
+		}
+		else
+			
+		return orderBookRepository.searchText(text);
+	}
+
+
 
 }

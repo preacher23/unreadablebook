@@ -5,7 +5,7 @@ import java.util.List;
 import com.verinite.bookstore.entity.Category;
 
 public interface CategoryService {
-	public Category saveCategory(Category category);
+	public Object saveCategory(Category category);
 
 	public List<Category> getAllCategorys();
 

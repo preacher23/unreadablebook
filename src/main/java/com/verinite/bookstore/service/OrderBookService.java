@@ -21,5 +21,7 @@ public interface OrderBookService {
 	/*
 	 * //delete order id String deleteByOrderId(int orderId);
 	 */
-
+	
+	//search by all text
+		List<OrderBook> searchText(Object text);
 }

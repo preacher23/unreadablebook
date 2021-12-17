@@ -3,7 +3,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "publisher")
+@Table(name = "tbl_publisher")
 public class Publisher {
     @Id
     @Column(name = "publisher_id")

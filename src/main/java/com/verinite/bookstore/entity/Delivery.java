@@ -46,6 +46,9 @@ public class Delivery {
     
     @Column(name ="pincode")
     private String pincode;
+    
+    @Column(name = "is_deleted")
+	private Boolean isDeleted=false;
 
 	public int getId() {
 		return id;
@@ -127,8 +130,28 @@ public class Delivery {
 		this.pincode = pincode;
 	}
 
+	
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public Delivery() {
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Delivery [id=" + id + ", customername=" + customername + ", address1=" + address1 + ", address2="
+				+ address2 + ", createdon=" + createdon + ", updatedon=" + updatedon + ", city=" + city + ", state="
+				+ state + ", country=" + country + ", pincode=" + pincode + ", isDeleted=" + isDeleted + "]";
+	}
+
 	public Delivery(int id, String customername, String address1, String address2, Date createdon, Date updatedon,
-			String city, String state, String country, String pincode) {
+			String city, String state, String country, String pincode, Boolean isDeleted) {
 		super();
 		this.id = id;
 		this.customername = customername;
@@ -140,17 +163,7 @@ public class Delivery {
 		this.state = state;
 		this.country = country;
 		this.pincode = pincode;
-	}
-
-	@Override
-	public String toString() {
-		return "Delivery [id=" + id + ", customername=" + customername + ", address1=" + address1 + ", address2="
-				+ address2 + ", createdon=" + createdon + ", updatedon=" + updatedon + ", city=" + city + ", state="
-				+ state + ", country=" + country + ", pincode=" + pincode + "]";
-	}
-
-	public Delivery() {
-		
+		this.isDeleted = isDeleted;
 	}
 
 

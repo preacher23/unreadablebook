@@ -58,7 +58,24 @@ public class DeliveryServiceImpl implements DeliveryService {
         } catch (Exception e) {
             return "record is not present to update with id of " + id;
         }
-
-
     }
-}
+
+        @Override
+        public String deletedelivery(int id) {
+            Delivery delivery1 = new Delivery();
+            try {
+                delivery1 = deliveryRepo.getById(id);
+            }catch (Exception e){
+                return "id" + id + "is not present";
+            }
+            if (0 != delivery1.getId() && !delivery1.getIsDeleted()){
+                delivery1.setIsDeleted(true);
+                deliveryRepo.save(delivery1);
+                return "deleted successfully";
+            } else  if (delivery1.getIsDeleted()){
+                return "data deleted successfully";
+            }else{
+                return "no data found";
+            }
+        }
+    }

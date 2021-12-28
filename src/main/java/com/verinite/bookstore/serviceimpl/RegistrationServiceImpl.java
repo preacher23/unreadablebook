@@ -88,5 +88,21 @@ public class RegistrationServiceImpl implements RegistrationService {
 			return "Error:  no data is present ";
 		}
 	}
+	
+	@Override
+	public Registration getRegistration(Registration registration) {
+        List<Registration> registrationlist = new ArrayList<>();
+        registrationlist=registrationRepository.findByUserName(registration.getUserName());
+        if(!registrationlist.isEmpty()) {
+        	for(Registration reg :registrationlist ) {
+        		registration.setConfirmPassword(reg.getConfirmPassword());
+        		registration.setUserName(reg.getUserName());
+        		registration.setRegisterId(reg.getRegisterId());
+        		registration.setEmailaddress(reg.getEmailaddress());
+        		registration.setPassword(reg.getPassword());
+        	}
+        }
+		return registration;
+	}
 
 }

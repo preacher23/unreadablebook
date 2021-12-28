@@ -49,4 +49,12 @@ public class RegistrationController {
 	public Object updateRegistration(@PathVariable int registerId, @RequestBody Registration registration) {
 		return registrationService.updateRegistration(registerId, registration);
 	}
+	
+	@GetMapping("/login/{userName}")
+	public Object login(@PathVariable("userName") String username ) {
+		Registration registration = new Registration();
+		registration.setUserName(username);
+		registration = registrationService.getRegistration(registration);
+		return registration;
+	}
 }

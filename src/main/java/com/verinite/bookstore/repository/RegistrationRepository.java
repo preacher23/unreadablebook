@@ -1,5 +1,6 @@
 package com.verinite.bookstore.repository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -12,4 +13,7 @@ public interface RegistrationRepository extends JpaRepository<Registration, Inte
 
 	@Query(value="select * from tbl_registration where is_delete=false", nativeQuery = true)
     List<Registration> getAllUser(boolean isDelete);
+	
+	@Query(value="select * from tbl_registration where user_name IN(:userName)", nativeQuery = true)
+	List<Registration> findByUserName(@Param("userName") String userName);
 }

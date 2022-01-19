@@ -92,7 +92,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 	@Override
 	public Registration getRegistration(Registration registration) {
         List<Registration> registrationlist = new ArrayList<>();
-        registrationlist=registrationRepository.findByUserName(registration.getUserName());
+        registrationlist=registrationRepository.findByUserNames(registration.getUserName());
         if(!registrationlist.isEmpty()) {
         	for(Registration reg :registrationlist ) {
         		registration.setConfirmPassword(reg.getConfirmPassword());
@@ -105,4 +105,93 @@ public class RegistrationServiceImpl implements RegistrationService {
 		return registration;
 	}
 
+//	@Override
+//	public Object change1(Registration registration) {
+////		String email=registration.getEmailaddress();
+////			try {
+////				registrationData = registrationRepository.findByEmail(email).get();
+////				if (registrationData.isDelete()==true) {
+////					return "Error : There is no Data with this id  " + email;
+////					}
+////				if(registration.getUserName()!=null)
+////				{
+////				registrationData.setUserName(registration.getUserName());
+////				
+////				}
+////				if(registration.getEmailaddress()!=null)
+////				{
+////				registrationData.setEmailaddress(registration.getEmailaddress());
+////				}
+////				if(registration.getMobileNumber()!=null)
+////				{
+////				registrationData.setMobileNumber(registration.getMobileNumber());
+////				}
+////				if(registration.getRegisterId()!=0)
+////				{
+////				registrationData.setRegisterId(registration.getRegisterId());
+////				}
+////				registrationData.setPassword(registration.getPassword());
+////				registrationData.setConfirmPassword(registration.getConfirmPassword());
+////				registrationData.setUpdatedOn(new Date());
+////				return registrationRepository.save(registrationData);
+////			} catch (Exception e) {
+////
+////				
+////			}
+////	}
+//		return "Error:  no data is present ";
+//	}
+	
+	@Override
+	public Object change(Registration registration) {
+		String email=registration.getEmailaddress();
+			try {
+				registrationData = registrationRepository.findByEmail(email).get();
+				if (registrationData.isDelete()==true) {
+					return "Error : There is no Data with this id  " + email;
+					}
+				if(registration.getUserName()!=null)
+				{
+				registrationData.setUserName(registration.getUserName());
+				
+				}
+				if(registration.getEmailaddress()!=null)
+				{
+				registrationData.setEmailaddress(registration.getEmailaddress());
+				}
+				if(registration.getMobileNumber()!=null)
+				{
+				registrationData.setMobileNumber(registration.getMobileNumber());
+				}
+				if(registration.getRegisterId()!=0)
+				{
+				registrationData.setRegisterId(registration.getRegisterId());
+				}
+				registrationData.setPassword(registration.getPassword());
+				registrationData.setConfirmPassword(registration.getConfirmPassword());
+				registrationData.setUpdatedOn(new Date());
+				return registrationRepository.save(registrationData);
+			} catch (Exception e) {
+
+				return "Error:  no data is present ";
+			}
+	}
+
+	@Override
+	public Object getByEmail(String mail) {
+		
+		
+			registrationData = registrationRepository.findByEmailaddress(mail).get();
+			return registrationData;
+		
+		
+	}
+
+	@Override
+	public Object getByUsername(String user) {
+		System.out.println(user);
+		registrationData = registrationRepository.findByUserName(user).get();
+		System.out.println(registrationData);
+		return registrationData;
+	}
 }

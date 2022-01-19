@@ -4,10 +4,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @SpringBootApplication
+@EnableEurekaClient
 public class BookApplication extends SpringBootServletInitializer {
 	
     private static final Logger LOGGER = LogManager.getLogger(BookApplication.class);
@@ -27,4 +32,9 @@ public class BookApplication extends SpringBootServletInitializer {
 //        LOGGER.error("Error level log message");
 	}
 
+	@Bean
+	@LoadBalanced
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
 }

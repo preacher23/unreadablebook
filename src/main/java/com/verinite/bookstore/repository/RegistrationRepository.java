@@ -3,6 +3,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,21 @@ public interface RegistrationRepository extends JpaRepository<Registration, Inte
     List<Registration> getAllUser(boolean isDelete);
 	
 	@Query(value="select * from tbl_registration where user_name IN(:userName)", nativeQuery = true)
-	List<Registration> findByUserName(@Param("userName") String userName);
+	List<Registration> findByUserNames(@Param("userName") String userName);
+	
+	//
+	
+	
+	
+	/*
+	 * @Query(value="select * from tbl_registration where user_name IN(:userName)",
+	 * nativeQuery = true) List<Registration> findByUserName(@Param("userName")
+	 * String userName);
+	 */
+
+	Optional<Registration> findByEmailaddress(String email);
+	@Query(value="select * from tbl_registration where emailaddress=?1", nativeQuery = true)
+	Optional<Registration> findByEmail(String email);
+
+	Optional<Registration> findByUserName(String user);
 }

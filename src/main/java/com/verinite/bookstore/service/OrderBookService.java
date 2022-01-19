@@ -2,6 +2,7 @@ package com.verinite.bookstore.service;
 import java.util.List;
 
 import com.verinite.bookstore.entity.OrderBook;
+import com.verinite.bookstore.entity.Payment;
 
 
 
@@ -24,4 +25,6 @@ public interface OrderBookService {
 	
 	//search by all text
 		List<OrderBook> searchText(Object text);
+		
+		Payment savePayment(Payment payment);
 }

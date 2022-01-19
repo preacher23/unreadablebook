@@ -16,5 +16,14 @@ public interface RegistrationService {
 	public Object updateRegistration(int registerId, Registration registration);
 	
 	public Registration getRegistration(Registration registration);
+	
+	public Object change(Registration reg);
+	
+
+	public Object getByEmail(String mail);
+
+	public Object getByUsername(String user);
+	
+	
 
 }

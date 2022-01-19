@@ -27,6 +27,8 @@ public class BookCategory {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedOn;
     
+    
+    
 	public int getId() {
 		return id;
 	}

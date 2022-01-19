@@ -35,7 +35,7 @@ public class BookCustomers {
 	private String state;
 	
 	@Column(nullable=false)
-	private String country;
+	private boolean country;
 	
 	@Column(nullable = false, length = 128)
 	private String pincode;
@@ -107,11 +107,11 @@ public class BookCustomers {
 		this.state = state;
 	}
 
-	public String isCountry() {
+	public boolean isCountry() {
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public void setCountry(boolean country) {
 		this.country = country;
 	}
 

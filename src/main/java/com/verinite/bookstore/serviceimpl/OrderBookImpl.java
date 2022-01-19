@@ -6,9 +6,13 @@ import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.verinite.bookstore.entity.OrderBook;
+import com.verinite.bookstore.entity.Payment;
 import com.verinite.bookstore.repository.OrderBookRepository;
 import com.verinite.bookstore.service.OrderBookService;
 
@@ -23,6 +27,8 @@ public class OrderBookImpl implements OrderBookService{
 		
 	}
 
+	@Autowired
+	RestTemplate restTemplate;
 	@Override
 	public OrderBook saveOrderBook(OrderBook  orderbook) {
 		 orderbook.setCreatedOn(new Date());
@@ -125,6 +131,14 @@ public class OrderBookImpl implements OrderBookService{
 		return orderBookRepository.searchText(text);
 	}
 
+	
+	@Override
+	public Payment savePayment(Payment payment) {
+		HttpEntity<Payment> entity=new HttpEntity<>(payment);
+		
+		
+		return restTemplate.exchange("http://payment/payment/save", HttpMethod.POST, entity, Payment.class).getBody();
+	}
 
 
 }

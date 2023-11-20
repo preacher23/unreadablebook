@@ -20,6 +20,7 @@ public class BookCategoryServiceImpl implements BookCategoryService {
         List<BookCategory>booklist = new ArrayList<BookCategory>();
         bookCategoryRepository.findAll().forEach(bookCategory -> booklist.add(bookCategory));
         return booklist;
+        //OR return bookCategoryRepo.findAll();
     }
 
     @Override
@@ -36,6 +37,7 @@ public class BookCategoryServiceImpl implements BookCategoryService {
         bookCategory.setCreatedOn(new Date());
         bookCategory.setUpdatedOn(new Date());
         return bookCategoryRepository.save(bookCategory);
+
     }
 
 
